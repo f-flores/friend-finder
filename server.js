@@ -35,20 +35,20 @@ app.listen(PORT, function() {
 });
 
 app.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "view.html"));
+	res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/add", function(req, res) {
+app.get("/survey", function(req, res) {
 	res.sendFile(path.join(__dirname, "add.html"));
 });
 
 // Displays all characters
-app.get("/api/characters", function(req, res) {
+/* app.get("/api/characters", function(req, res) {
 	return res.json(characters);
-});
+}); */
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
+/* app.get("/api/characters/:character", function(req, res) {
 	var chosen = req.params.character;
 
 	console.log(chosen);
@@ -60,7 +60,7 @@ app.get("/api/characters/:character", function(req, res) {
 	}
 
 	return res.json(false);
-});
+}); */
 
 // Create New Characters - takes in JSON input
 /* app.post("/api/characters", function(req, res) {
