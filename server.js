@@ -1,3 +1,13 @@
+// =====================================================================
+//
+// File name: server.js
+// Date: April, 2018
+// Description: 
+// Author: Fabian Flores
+//
+// =====================================================================
+ 
+
 // Dependencies
 // =============================================================
 var express = require("express");
@@ -13,68 +23,49 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Star Wars Characters (DATA)
-// =============================================================
-var characters = [
-  {
-    routeName: "yoda",
-    name: "Yoda",
-    role: "Jedi Master",
-    age: 900,
-    forcePoints: 2000
-  },
-  {
-    routeName: "darthmaul",
-    name: "Darth Maul",
-    role: "Sith Lord",
-    age: 200,
-    forcePoints: 1200
-  },
-  {
-    routeName: "obiwankenobi",
-    name: "Obi Wan Kenobi",
-    role: "Jedi Master",
-    age: 55,
-    forcePoints: 1350
-  }
-];
-
 // Routes
 // =============================================================
-// group routes by similar functions
-// for example, all view html files
-// then, all json files
-// Basic route that sends the user first to the AJAX Page
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+
+
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+	console.log("App listening on PORT " + PORT);
+});
+
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+	res.sendFile(path.join(__dirname, "view.html"));
 });
 
 app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
+	res.sendFile(path.join(__dirname, "add.html"));
 });
 
 // Displays all characters
 app.get("/api/characters", function(req, res) {
-  return res.json(characters);
+	return res.json(characters);
 });
 
 // Displays a single character, or returns false
 app.get("/api/characters/:character", function(req, res) {
-  var chosen = req.params.character;
+	var chosen = req.params.character;
 
-  console.log(chosen);
+	console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
-    }
-  }
+	for (var i = 0; i < characters.length; i++) {
+		if (chosen === characters[i].routeName) {
+			return res.json(characters[i]);
+		}
+	}
 
-  return res.json(false);
+	return res.json(false);
 });
 
 // Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
+/* app.post("/api/characters", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newcharacter = req.body;
@@ -88,10 +79,4 @@ app.post("/api/characters", function(req, res) {
   characters.push(newcharacter);
 
   res.json(newcharacter);
-});
-
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
-});
+}); */
