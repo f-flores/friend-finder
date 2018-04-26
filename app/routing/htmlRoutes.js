@@ -6,13 +6,17 @@
 // =====================================================================
 
 const path = require("path");
+const friends = require("../data/friends");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+    res.render("friends-layout", {
+      friends: friends
+    });
   });
 
   app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
+
 }
