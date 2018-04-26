@@ -6,14 +6,13 @@
 // =====================================================================
 
 const path = require("path");
+const friends = require("../data/friends");
 
 module.exports = function(app) {
 
   // Get ALL tables/reservations
   app.get("/api/friends", function(req, res) {
-  
-    return res.json(true);
-
+      return res.json(friends);
   });
 
 }
