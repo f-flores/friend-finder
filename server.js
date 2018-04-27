@@ -27,6 +27,8 @@ var app = express();
 app.engine("handlebars", expresshbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// for style.css
+app.use(express.static(path.join(__dirname, '/app/public')));
 
 // setup routes
 require("./app/routing/apiRoutes")(app);
