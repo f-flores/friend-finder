@@ -27,6 +27,10 @@ var app = express();
 app.engine("handlebars", expresshbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// body parser to handle midway data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // for style.css
 app.use(express.static(path.join(__dirname, '/app/public')));
 
