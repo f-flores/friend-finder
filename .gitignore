@@ -7,3 +7,4 @@ dist
 .eslintrc.json
 .style.scss
 gulpfile.js
+app/public/css/style.scss
