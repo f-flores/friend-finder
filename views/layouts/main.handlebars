@@ -10,16 +10,20 @@
 </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-light bg-success">
-        <span class="navbar-brand mb-0 h1">Friend Finder</span>
-      </nav>
+    <header class="row">
+      <div class="col-10">
+        <nav class="navbar navbar-light bg-info">
+          <span class="navbar-brand ml-2 mb-1 rainbow-h1">Friend Finder</span>
+        </nav>
+      </div>
     </header>
     {{{ body }}}
 
-    <footer>
-      <a href="/api/friends">API Friends List</a>&nbsp;|&nbsp;
-      <a href="https://github.com/f-flores">Github Repo</a>
+    <footer class="footer">
+      <div class="container">
+        <a href="/api/friends">API Friends List</a>&nbsp;|&nbsp;
+        <a href="https://github.com/f-flores">Github Repo</a>
+      </div>
     </footer>
 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

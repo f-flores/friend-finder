@@ -1,11 +1,36 @@
 /* stylesheet */
-* {
-  box-sizing: border-box; }
+html {
+  box-sizing: border-box;
+  /* box model */ }
+  html body {
+    background-color: #CAE6F2;
+    height: 100%;
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%; }
+    html body .welcome-box {
+      margin: 5% 10%;
+      background-color: lightgrey;
+      width: 80%;
+      border: 25px solid green;
+      padding: 25px;
+      margin: 25px; }
+    html body .rainbow-h1 {
+      background: yellow;
+      background: -webkit-linear-gradient(left, yellow, orange, green, cyan, blue, violet);
+      background: -o-linear-gradient(right, yellow, orange, green, cyan, blue, violet);
+      background: -moz-linear-gradient(right, yellow, orange, green, cyan, blue, violet);
+      background: linear-gradient(to right, yellow, orangered, green, cyan, blue, violet);
+      background-clip: content-box;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      font-size: 3.0vw; }
 
-html body {
-  background-color: #6fbeec;
-  height: 100%;
-  width: 99%; }
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
 
 /* @media only screen and (max-width: $px-sm-b-size) {
   html {
@@ -51,8 +76,7 @@ html body {
 
     }
   }
-}
- */
+} */
 /*
     .custom-gradient {
       color: $giphy-tbutton-txt;
@@ -76,11 +100,11 @@ html body {
       font-size: 170%;
       text-shadow: 1px 1px $giphy-color-3;
 
-      // box model
+      // box model 
       width: 100%;
       padding: 10px;
 
-      // Positioning 
+      // Positioning
       margin: 0 auto;
     }
 
@@ -225,4 +249,4 @@ html body {
     #favorites-list {
       margin-left: 10px;
     }
-    */
+*/
