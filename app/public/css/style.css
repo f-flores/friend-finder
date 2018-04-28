@@ -1,18 +1,17 @@
 /* stylesheet */
 html {
-  box-sizing: border-box;
-  /* box model */ }
+  box-sizing: border-box; }
   html body {
-    background-color: #CAE6F2;
+    background-color: #FAFAFA;
     height: 100%;
     width: 100%;
     margin-left: 5%;
     margin-right: 5%; }
     html body .welcome-box {
-      margin: 5% 10%;
-      background-color: lightgrey;
+      margin: 5% 8%;
+      background-color: #DCDCDC;
       width: 80%;
-      border: 25px solid green;
+      border: 5px solid #3B5998;
       padding: 25px;
       margin: 25px; }
     html body .rainbow-h1 {
@@ -26,7 +25,11 @@ html {
       -webkit-text-fill-color: transparent;
       font-weight: bold;
       font-size: 3.0vw; }
+    html body .footer a:hover {
+      text-decoration: none;
+      color: #3B5998; }
 
+/* box model */
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
@@ -84,7 +87,7 @@ html {
     }
 
     .custom-nav-bg {
-      background: linear-gradient(to right, $giphy-color-5, $giphy-color-7);
+      background: linear-gradient(to right, $friend-color-5, $friend-color-7);
     }
 
     .custom-h1 {
@@ -98,7 +101,7 @@ html {
     .custom-h3 {
       font-family: $giphyapp-font-body;
       font-size: 170%;
-      text-shadow: 1px 1px $giphy-color-3;
+      text-shadow: 1px 1px $friend-color-3;
 
       // box model 
       width: 100%;
@@ -144,11 +147,11 @@ html {
 
     .topic-button:hover, .favorite-button:hover {
       background: linear-gradient(to right, $giphy-tbutton-hv-s, $giphy-tbutton-hv-e);
-      color: $giphy-color-6;
+      color: $friend-color-6;
     }
 
     .show-favorite:hover {
-      outline: 4px solid $giphy-color-2;
+      outline: 4px solid $friend-color-2;
     }
 
     .clear-button, .clear-favs-button {
@@ -174,7 +177,7 @@ html {
     }
 
     .fav-button:hover {
-      background: $giphy-color-7;
+      background: $friend-color-7;
       color: white;
     }
 
@@ -186,7 +189,7 @@ html {
       padding: 4px;
       border-radius: 15px;
       font-weight: bold;
-      color: $giphy-color-7;
+      color: $friend-color-7;
     }
 
     .clear-images:hover {
@@ -229,7 +232,7 @@ html {
     }
 
     #add-topic {
-      background: linear-gradient(to right, $giphy-color-1, $giphy-color-2);
+      background: linear-gradient(to right, $friend-color-1, $friend-color-2);
       margin-left: 0px;
       // max-height: 100vh;
     }
@@ -239,11 +242,11 @@ html {
     }
 
     #topic-images {
-      background-color: $giphy-color-3;
+      background-color: $friend-color-3;
     }
 
     #favorites {
-      background: linear-gradient(to right, $giphy-fav-section, $giphy-color-7);
+      background: linear-gradient(to right, $giphy-fav-section, $friend-color-7);
     }
 
     #favorites-list {

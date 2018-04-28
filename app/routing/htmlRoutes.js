@@ -10,14 +10,17 @@ const friends = require("../data/friends");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.render("friends-layout", {
+    res.render("friends-layout");
+  });
+
+  app.get("/survey", function(req, res) {
+    res.render("survey-layout", {
       friends: friends
     });
   });
 
-
-  app.get("/survey", function(req, res) {
+/*   app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
-  });
+  }); */
 
 }
