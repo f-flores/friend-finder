@@ -7,6 +7,8 @@ html {
     width: 100%;
     margin-left: 5%;
     margin-right: 5%; }
+    html body label {
+      font-size: 1.5rem; }
     html body .welcome-box {
       margin: 5% 8%;
       background-color: #DCDCDC;
@@ -14,6 +16,13 @@ html {
       border: 5px solid #3B5998;
       padding: 25px;
       margin: 25px; }
+    html body .survey-header-box {
+      margin: 5% 8%;
+      background-color: #DCDCDC;
+      width: 80%;
+      border: 5px solid #3B5998;
+      padding: 15px;
+      margin: 15px; }
     html body .rainbow-h1 {
       background: yellow;
       background: -webkit-linear-gradient(left, yellow, orange, green, cyan, blue, violet);

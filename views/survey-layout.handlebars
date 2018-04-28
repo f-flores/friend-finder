@@ -1,25 +1,95 @@
-<h1>Survey</h1>
-
   <div class="container">
-    <div class="jumbotron">
-        <h1>Survey</h1>
-        <h3>Survey form</h3>
-        <hr>
-        <a href="/"><button class="btn btn-primary btn-lg">Home</button></a>
-    </div>
-    <div class="row">
-
-      <div class="col-lg-12">
-
-
-      </div>
+    <div class="survey-header-box">
+        <h1 class="display-5 ml-2">Survey</h1>
+        <h3 class="display-7">Survey form</h3>
+        <div>
+          <a href="/">
+            <button type="button" class="btn btn-primary btn-lg">Home</button>
+          </a>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#best-choice">
+          Launch demo modal
+          </button>
+        </div>
     </div>
   </div>
 
-{{#each friends }}
-<ul>
-  <li>Name: {{name}}</li>
-  <li>Photo: {{photo}}</li>
-  <li>Score: {{scores}}</li>
-</ul>
-{{/each}}
+    <div class="row">
+      <div class="col-md-10">
+      <h3>About You</h3>
+      <hr>
+      <form>
+        <div class="form-row">
+          <div class="col-md-8 mb-3">
+            <label for="validationDefault01">Name (Required)</label>
+            <input type="text" class="form-control" id="friendName" placeholder="Name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-8 mb-3">
+            <label for="validationDefault02">Photo (Required)</label>
+            <input type="text" class="form-control" id="friendPhoto" placeholder="url of image"  required>
+          </div>
+        </div>
+        <hr>
+        {{#each surveyQuestions }}
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <h3>Question {{addOne @index "+" 1}}</h3>
+              <h4>{{question}}</h4>
+              <select class="opt-selected" id={{makeId @index "+" 1}}>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+              </select>
+            </div>
+          </div>
+        {{/each}}
+        <button class="mt-3 mb-2 btn btn-primary" type="submit" id="submit-btn">Submit form</button>
+      </form>
+
+      </div>
+    </div>
+
+{{!-- Modal --}}
+<div class="modal" tabindex="-1" role="dialog" id="best-choice">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  console.log("Hello from survey-layout");
+  $("#submit-btn").on("click", function(event) {
+    var userInfo = {};
+
+    event.preventDefault();
+
+    // validate form
+    userInfo = {
+      "name": $("#friendName").val(),
+      "photo": $("#friendPhoto").val(),
+      "scores": [ $("#qtn1").val(), $("#qtn2").val()]
+    };
+
+    // post data to api
+    $.post("/api/friends", userInfo, function(data) {
+      console.log(JSON.stringify(data));
+    });
+  }); 
+</script>

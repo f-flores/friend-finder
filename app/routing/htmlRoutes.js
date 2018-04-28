@@ -7,6 +7,7 @@
 
 const path = require("path");
 const friends = require("../data/friends");
+const surveyQuestions = require("../data/surveyQuestions");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
@@ -15,7 +16,7 @@ module.exports = function(app) {
 
   app.get("/survey", function(req, res) {
     res.render("survey-layout", {
-      friends: friends
+      surveyQuestions: surveyQuestions
     });
   });
 

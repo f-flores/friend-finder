@@ -13,6 +13,8 @@ var express = require("express");
 var expresshbs = require("express-handlebars");
 
 var bodyParser = require("body-parser");
+// var helpers = require("handlebars-helpers")(["math", "string"]);
+
 var path = require("path");
 
 // ---------------------------------------------------------------------
@@ -24,7 +26,16 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 // set Handlebars as the default templating engine.
-app.engine("handlebars", expresshbs({ defaultLayout: "main" }));
+app.engine("handlebars", expresshbs({ defaultLayout: "main",
+	helpers: { 
+		addOne: function(value, options) {
+			return parseInt(value) + 1;
+		},
+		makeId: function(value, options) {
+			return "qtn" + (parseInt(value) + 1).toString();
+		}
+	}
+	}));
 app.set("view engine", "handlebars");
 
 // body parser to handle midway data parsing

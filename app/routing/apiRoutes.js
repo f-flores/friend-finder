@@ -18,6 +18,13 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) {
     // req.body hosts is equal to JSON post sent from client
     var newfriend = req.body;
+    var userChoices = req.body.scores;
+    var i;
+
+    for (i = 0; i < userChoices.length; i++){
+      userChoices[i] = parseInt(userChoices[i]);
+    }
+    console.log(userChoices);
 
     console.log(newfriend);
     friends.push(newfriend);
