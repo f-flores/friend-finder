@@ -8,7 +8,9 @@ This app records results from users' survey forms. Subsequently, a user's respon
 
 ## Technical Information
 
-I used a node web server for this project. Express handles routing. And I leveraged Express "handlebars" for templating. 
+I used a node web server for this project. Express handles routing. And I leveraged Express "handlebars" for templating.
+
+![alt text](./README_images/friend-finder.png "Friend Finder app")
 
 ## Installation
 
