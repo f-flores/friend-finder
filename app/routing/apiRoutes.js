@@ -27,8 +27,6 @@ module.exports = function(app) {
       // make copy of array of objects
       var reArr = JSON.parse(JSON.stringify(arr));
       var ind, tmp, randNum;
-      // console.log("beginning arr like copy: " + JSON.stringify(arr));
-      // console.log("beginning reArr like copy: " + JSON.stringify(reArr));
 
       for (ind = reArr.length - 1; ind > 0; ind--){
         randNum = Math.floor(Math.random() * (ind + 1));
@@ -36,7 +34,6 @@ module.exports = function(app) {
         reArr[ind] = reArr[randNum];
         reArr[randNum] = tmp;
       }
-      console.log("beginning reArr like copy: " + JSON.stringify(reArr));
       return reArr;
     }
 
@@ -51,7 +48,6 @@ module.exports = function(app) {
       rearrFriends = shuffle(friends);
 
       for (ind = 0; ind < rearrFriends.length; ind++ ) {
-        // console.log(rest[ind].scores);
         var diff = 0, totalDiff = 0;
         for (var j = 0; j < rearrFriends[ind].scores.length; j++) {
           diff = Math.abs(nArr[j] - rearrFriends[ind].scores[j]);

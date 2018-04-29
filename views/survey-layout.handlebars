@@ -53,17 +53,16 @@
     </div>
 
 {{!-- Modal --}}
-<div class="modal" tabindex="-1" role="dialog" id="best-choice">
+<div class="modal" tabindex="-1" role="dialog" id="best-match">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title" id="bmatch-name"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
+      <div class="modal-body" id="bmatch-pic">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -89,7 +88,14 @@
 
     // post data to api
     $.post("/api/friends", userInfo, function(data) {
+      bimg = $("<img>");
       console.log("Best Match: " + JSON.stringify(data));
+      $("#bmatch-name").html(data.name);
+      bimg.attr("src", data.photo);
+      bimg.attr("alt", data.photo);
+      bimg.addClass("img-fluid");
+      $("#bmatch-pic").append(bimg);
+      $("#best-match").modal("toggle");
     });
   }); 
 </script>
