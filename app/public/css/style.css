@@ -9,6 +9,12 @@ html {
     margin-right: 5%; }
     html body label {
       font-size: 1.5rem; }
+    html body select option:first-child {
+      color: #b6b6b6; }
+    html body select option:nth-child(n+2) {
+      color: black; }
+    html body .opt-selected {
+      color: #b6b6b6; }
     html body .welcome-box {
       margin: 5% 8%;
       background-color: #DCDCDC;

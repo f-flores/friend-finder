@@ -1,7 +1,6 @@
   <div class="container">
     <div class="survey-header-box">
-        <h2 class="d-inline display-5 ml-2">Survey</h2>
-        <h4 class="d-inline display-7 ml-4">Form</h4>
+        <h2 class="d-inline display-5 ml-2">Survey Form</h2>
         <hr>
         <p class="lead">Please complete survey by filling out the "About You" section and
            answering questions.
@@ -38,6 +37,7 @@
               <h3>Question {{addOne @index "+" 1}}</h3>
               <h4>{{question}}</h4>
               <select class="opt-selected" id={{makeId @index "+" 1}}>
+                <option class="select-placeholder" selected="selected" disabled selected>Select your option</option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
