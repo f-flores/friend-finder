@@ -13,6 +13,7 @@ $(document).ready(function() {
     $(".opt-selected").each(function() {
       $(this).val("placeholder");
     });
+    $("#picture-error").empty();
   }
 
   // regular expression validators
@@ -28,6 +29,8 @@ $(document).ready(function() {
 
   // validation routines
   function checkNameInput() {
+    var isValid = true;
+
     $(".name-control").each(function() {
       if (validateName($(this).val()) === false) {
         $("#friendNameError").html("<p class=\"error-msg\">Invalid name must be at least 3 alpha characters long.</p>");
@@ -36,9 +39,13 @@ $(document).ready(function() {
         $("#friendNameError").html("");
       }
     });
+
+    return isValid;
   }
 
   function checkPhotoUrl() {
+    var isValid = true;
+
     $(".imgurl-control").each(function() {        
       if (validateImgUrl($(this).val()) === false) {
         $("#photoUrlError").html("<p class=\"error-msg\">Please enter valid image url in the form of http://www.domain.com/image.jpg</p>");
@@ -47,9 +54,13 @@ $(document).ready(function() {
         $("#photoUrlError").html("");
       }
     });
+
+    return isValid;
   }
 
   function checkSurveyAnswers() {
+    var isValid = true;
+
     $(".opt-selected").each(function(index) {
       var surveyIndex = index + 1, selString;
       // console.log("surveyIndex: " + surveyIndex + " value: " + $(this).val());
@@ -64,7 +75,8 @@ $(document).ready(function() {
         $(selString).html("");
       }
     });
-  
+
+    return isValid;
   }
 
   $("#submit-btn").on("click", function(event) {
@@ -78,6 +90,7 @@ $(document).ready(function() {
           isValidImgUrl = checkPhotoUrl(),
           isValidSurvey = checkSurveyAnswers();
 
+      console.log("isValid: " + (isValidName && isValidImgUrl && isValidSurvey));
       return isValidName && isValidImgUrl && isValidSurvey;
     }
 
@@ -96,16 +109,55 @@ $(document).ready(function() {
       // post data to api
       $.post("/api/friends", userInfo, function(data) {
         // place best match users info in modal
-        bimg = $("<img>");
-        console.log("Best Match: " + JSON.stringify(data));
+        var bimg = $("<img>");
         $("#bmatch-name").html(data.name);
         bimg.attr("src", data.photo).
             attr("alt", data.photo).
             addClass("img-fluid");
-        $("#bmatch-pic").replaceWith(bimg);
+        bimg.error(function(){
+              this.onerror = null;
+              this.src = "https://via.placeholder.com/300x250.png";
+              $("#picture-error").html("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
+        });
+
+        $("#bmatch-pic").append(bimg);
         $("#best-match").modal("toggle");
-        clearInputFields();
       });
     }
+
+    $("#best-match").on("hidden.bs.modal", function () {
+      // on hidden modal execute following
+      $("#bmatch-pic").empty();
+      $("#bmatch-name").empty();
+      clearInputFields();
+    });
   });
 })
+
+/*          function imgErrorHandler(img) {
+          var imgName = $(this).attr("src");
+          console.log("imgName: " + imgName);
+          // console.log("img: " + img);
+          console.log("img obj: " + JSON.stringify(img));
+          img.onerror = null;
+          img.src = "https://via.placeholder.com/300x250.png";
+          // img.attr("src","https://via.placeholder.com/300x250.png");
+          $("#picture-error").html("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
+          return true; 
+        }  */
+/*         bimg.error(function(){
+              console.log(this);
+              console.log(JSON.stringify(this));
+              imgErrorHandler(this); */
+              // bimg.onerror = null;
+              // bimg.attr("src","https://via.placeholder.com/300x250.png");
+              // $("#picture-error").html("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
+         //    }); 
+            // attr("onerror","return imgErrorHandler(this);");
+            //attr("onerror","this.onerror=null;this.src=\"https://via.placeholder.com/300x250.png\";");
+                       // attr("onerror", imgErrorHandler());
+        /* bimg.onerror(function(){
+              $(this).attr("src", "https://via.placeholder.com/300x250.png");
+              $(this).after("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
+              bimg.after("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
+        }); */ 

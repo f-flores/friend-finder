@@ -52,6 +52,9 @@ html {
     html body .footer a:hover {
       text-decoration: none;
       color: #3B5998; }
+    html body .picture-error {
+      color: darkblue;
+      font-weight: bold; }
 
 /* box model */
 *, *:before, *:after {

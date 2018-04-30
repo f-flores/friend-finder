@@ -68,8 +68,8 @@
         <hr>
       </div>
       <h5 class="modal-body" id="bmatch-name"></h5>
-      <div class="modal-body" id="bmatch-pic">
-      </div>
+      <div class="modal-body" id="bmatch-pic"></div>
+      <div id="picture-error"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary justify-content-end" data-dismiss="modal">Close</button>
       </div>
@@ -78,47 +78,3 @@
 </div>
 
 <script type="text/javascript" src="./js/survey.js"></script>
-{{!--   console.log("Hello from survey-layout");
-  $("#submit-btn").on("click", function(event) {
-    var userInfo = {};
-
-    event.preventDefault();
- 
-    // validate form
-    function formValidated() {
-      var isValid = true;
-
-      $(".form-control").each(function() {
-        if ($(this).val() === "") {
-          isValid = false;
-        }
-      });
-      return isValid;
-    }
-
-    if (formValidated()) {
-      userInfo = {
-        "name": $("#friendName").val(),
-        "photo": $("#friendPhoto").val(),
-        "scores": [ $("#qtn1").val(), $("#qtn2").val(),
-                    $("#qtn3").val(), $("#qtn4").val(),
-                    $("#qtn5").val(), $("#qtn6").val(),
-                    $("#qtn7").val(), $("#qtn8").val(),
-                    $("#qtn9").val(), $("#qtn10").val()]
-      };
-    
-      // post data to api
-      $.post("/api/friends", userInfo, function(data) {
-        // place best match users info in modal
-        bimg = $("<img>");
-        console.log("Best Match: " + JSON.stringify(data));
-        $("#bmatch-name").html(data.name);
-        bimg.attr("src", data.photo).
-            attr("alt", data.photo).
-            addClass("img-fluid");
-        $("#bmatch-pic").replaceWith(bimg);
-        $("#best-match").modal("toggle");
-      });
-    }
-  });
- --}}
