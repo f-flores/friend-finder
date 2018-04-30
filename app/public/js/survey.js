@@ -133,31 +133,3 @@ $(document).ready(function() {
     });
   });
 })
-
-/*          function imgErrorHandler(img) {
-          var imgName = $(this).attr("src");
-          console.log("imgName: " + imgName);
-          // console.log("img: " + img);
-          console.log("img obj: " + JSON.stringify(img));
-          img.onerror = null;
-          img.src = "https://via.placeholder.com/300x250.png";
-          // img.attr("src","https://via.placeholder.com/300x250.png");
-          $("#picture-error").html("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
-          return true; 
-        }  */
-/*         bimg.error(function(){
-              console.log(this);
-              console.log(JSON.stringify(this));
-              imgErrorHandler(this); */
-              // bimg.onerror = null;
-              // bimg.attr("src","https://via.placeholder.com/300x250.png");
-              // $("#picture-error").html("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
-         //    }); 
-            // attr("onerror","return imgErrorHandler(this);");
-            //attr("onerror","this.onerror=null;this.src=\"https://via.placeholder.com/300x250.png\";");
-                       // attr("onerror", imgErrorHandler());
-        /* bimg.onerror(function(){
-              $(this).attr("src", "https://via.placeholder.com/300x250.png");
-              $(this).after("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
-              bimg.after("<p class=\"picture-error\">Sorry, image for user does not exist.</p>");
-        }); */ 
