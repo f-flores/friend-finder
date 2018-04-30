@@ -23,7 +23,9 @@ html {
       color: red;
       font-weight: bold; }
     html body .opt-selected {
-      color: #b6b6b6; }
+      color: black;
+      transition-duration: 2s;
+      transition-timing-function: ease-out; }
     html body .welcome-box {
       margin: 5% 0%;
       background-color: #DCDCDC;

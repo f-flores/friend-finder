@@ -8,9 +8,19 @@ This app records results from users' survey forms. Subsequently, a user's respon
 
 ## Technical Information
 
-I used a node web server for this project. Express handles routing. And I leveraged Express "handlebars" for templating.
+I used a node web server for this project. The npm express package handles routing. And I leveraged Express "handlebars" for templating.
+
+At first, the user is sent to the landing page. There is an option to "Go to Survey", and a website wide footer which includes links to the friend app api and the github repo for this project.
 
 ![alt text](./README_images/friend-finder.png "Friend Finder app")
+
+The app makes use of input validation so a user can fill out the form correctly.
+
+![alt text](./README_images/validation.png "Input validation")
+
+Once a user successfully fills out the form, the friend finder app returns the user's best match, based on the least difference between the user and the rest of the app's members.
+
+![alt text](./README_images/best-match-example.png "Best Match")
 
 ## Installation
 

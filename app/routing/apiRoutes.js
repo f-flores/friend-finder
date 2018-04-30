@@ -22,7 +22,7 @@ module.exports = function(app) {
         bestMatch = {},
         i;
     
-    /* shuffles array of objects */
+    /* shuffles array of objects Knuth Fisher Yates algorithm */
     function shuffle(arr) {
       // make copy of array of objects
       var reArr = JSON.parse(JSON.stringify(arr));

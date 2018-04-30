@@ -23,7 +23,7 @@ $(document).ready(function() {
   }
 
   function validateImgUrl(purl) {
-    var re = /(http(s?):)(\/\/)([\/|.|\w|\s|-])*\.(?:jpg|gif|png|bmp|svg|jpeg)/i;
+    var re = /((http(s)?(\:\/\/))+(www\.)?([\w\-\.\/])*(\.[a-zA-Z]{2,3}\/?))[^\s\b\n|]*[^.,;:\?\!\@\^\$ -]/i;
     return re.test(purl);
   }
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
     $(".imgurl-control").each(function() {        
       if (validateImgUrl($(this).val()) === false) {
-        $("#photoUrlError").html("<p class=\"error-msg\">Please enter valid image url in the form of http://www.domain.com/image.jpg</p>");
+        $("#photoUrlError").html("<p class=\"error-msg\">Please enter valid image url, something like http://www.domain.com/image.jpg</p>");
         isValid = false;
       } else {
         $("#photoUrlError").html("");
