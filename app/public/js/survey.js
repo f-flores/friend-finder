@@ -26,6 +26,47 @@ $(document).ready(function() {
     return re.test(purl);
   }
 
+  // validation routines
+  function checkNameInput() {
+    $(".name-control").each(function() {
+      if (validateName($(this).val()) === false) {
+        $("#friendNameError").html("<p class=\"error-msg\">Invalid name must be at least 3 alpha characters long.</p>");
+        isValid = false;
+      } else {
+        $("#friendNameError").html("");
+      }
+    });
+  }
+
+  function checkPhotoUrl() {
+    $(".imgurl-control").each(function() {        
+      if (validateImgUrl($(this).val()) === false) {
+        $("#photoUrlError").html("<p class=\"error-msg\">Please enter valid image url in the form of http://www.domain.com/image.jpg</p>");
+        isValid = false;
+      } else {
+        $("#photoUrlError").html("");
+      }
+    });
+  }
+
+  function checkSurveyAnswers() {
+    $(".opt-selected").each(function(index) {
+      var surveyIndex = index + 1, selString;
+      // console.log("surveyIndex: " + surveyIndex + " value: " + $(this).val());
+      // console.log("element: " + JSON.stringify(element));
+      selString = "#select-error-" + surveyIndex;
+      if ($(this).val() === null) {
+        $(selString).html("<p class=\"error-msg\">Please select valid option 1 - 5.</p>");
+        // console.log("selString: " + selString);
+        // console.log("select-error: " + $("#select-error-") + (index+1).toString());
+        isValid = false;
+      } else {
+        $(selString).html("");
+      }
+    });
+  
+  }
+
   $("#submit-btn").on("click", function(event) {
     var userInfo = {};
 
@@ -33,35 +74,13 @@ $(document).ready(function() {
 
     // validate form
     function formValidated() {
-      var isValid = true;
+      var isValidName = checkNameInput(),
+          isValidImgUrl = checkPhotoUrl(),
+          isValidSurvey = checkSurveyAnswers();
 
-      $(".name-control").each(function() {
-        if (validateName($(this).val()) === false) {
-          $("#friendNameError").html("<p class=\"error-msg\">Invalid name must be at least 3 alpha characters long.</p>");
-          isValid = false;
-        } else {
-          $("#friendNameError").html("");
-        }
-      });
-
-      $(".imgurl-control").each(function() {        
-        if (validateImgUrl($(this).val()) === false) {
-          $("#photoUrlError").html("<p class=\"error-msg\">Please enter valid image url in the form of http://www.domain.com/image.jpg</p>");
-          isValid = false;
-        } else {
-          $("#photoUrlError").html("");
-        }
-      });
-
-      $(".opt-selected").each(function(index, element) {
-        if ($(this).val() === null) {
-          $("#select-error-" + (index+1).toString()).html("<p class=\"error-msg\">Please select valid option 1 - 5.</p>");
-          isValid = false;
-        }
-      });
-
-      return isValid;
+      return isValidName && isValidImgUrl && isValidSurvey;
     }
+
 
     if (formValidated()) {
       userInfo = {
