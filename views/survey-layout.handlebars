@@ -21,13 +21,15 @@
         <div class="form-row">
           <div class="col-md-8 mb-3">
             <label for="validationDefault01">Name (Required)</label>
-            <input type="text" class="form-control" id="friendName" placeholder="Name" required>
+            <input type="text" class="form-control name-control" pattern="[a-zA-Z ]{1,}" id="friendName" placeholder="Name" required>
+            <div id="friendNameError"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-8 mb-3">
             <label for="validationDefault02">Photo (Required)</label>
-            <input type="text" class="form-control" id="friendPhoto" placeholder="url of image"  required>
+            <input type="text" class="form-control imgurl-control" id="friendPhoto" placeholder="url of image"  required>
+            <div id="photoUrlError"></div>
           </div>
         </div>
         <hr>
@@ -37,7 +39,7 @@
               <h3>Question {{addOne @index "+" 1}}</h3>
               <h4>{{question}}</h4>
               <select class="opt-selected" id={{makeId @index "+" 1}}>
-                <option class="select-placeholder" selected="selected" disabled selected>Select your option</option>
+                <option selected="selected" value="placeholder" disabled selected>Select your option</option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -45,6 +47,7 @@
                 <option value="5">5 (Strongly Agree)</option>
               </select>
             </div>
+            <div id={{selErrorId @index "+" 1}}></div>
           </div>
         {{/each}}
             <button class="mt-3 mb-2 btn btn-primary btn-large btn-block" type="submit" id="submit-btn">Submit Survey</button>
@@ -74,31 +77,48 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  console.log("Hello from survey-layout");
+<script type="text/javascript" src="./js/survey.js"></script>
+{{!--   console.log("Hello from survey-layout");
   $("#submit-btn").on("click", function(event) {
     var userInfo = {};
 
     event.preventDefault();
-
+ 
     // validate form
-    userInfo = {
-      "name": $("#friendName").val(),
-      "photo": $("#friendPhoto").val(),
-      "scores": [ $("#qtn1").val(), $("#qtn2").val()]
-    };
+    function formValidated() {
+      var isValid = true;
 
-    // post data to api
-    $.post("/api/friends", userInfo, function(data) {
-      // place best match users info in modal
-      bimg = $("<img>");
-      console.log("Best Match: " + JSON.stringify(data));
-      $("#bmatch-name").html(data.name);
-      bimg.attr("src", data.photo).
-           attr("alt", data.photo).
-           addClass("img-fluid");
-      $("#bmatch-pic").replaceWith(bimg);
-      $("#best-match").modal("toggle");
-    });
-  }); 
-</script>
+      $(".form-control").each(function() {
+        if ($(this).val() === "") {
+          isValid = false;
+        }
+      });
+      return isValid;
+    }
+
+    if (formValidated()) {
+      userInfo = {
+        "name": $("#friendName").val(),
+        "photo": $("#friendPhoto").val(),
+        "scores": [ $("#qtn1").val(), $("#qtn2").val(),
+                    $("#qtn3").val(), $("#qtn4").val(),
+                    $("#qtn5").val(), $("#qtn6").val(),
+                    $("#qtn7").val(), $("#qtn8").val(),
+                    $("#qtn9").val(), $("#qtn10").val()]
+      };
+    
+      // post data to api
+      $.post("/api/friends", userInfo, function(data) {
+        // place best match users info in modal
+        bimg = $("<img>");
+        console.log("Best Match: " + JSON.stringify(data));
+        $("#bmatch-name").html(data.name);
+        bimg.attr("src", data.photo).
+            attr("alt", data.photo).
+            addClass("img-fluid");
+        $("#bmatch-pic").replaceWith(bimg);
+        $("#best-match").modal("toggle");
+      });
+    }
+  });
+ --}}

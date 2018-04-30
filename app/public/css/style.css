@@ -5,13 +5,23 @@ html {
   margin-right: 15%; }
   html body {
     background-color: #FAFAFA;
-    width: 90%; }
+    width: 90%;
+    /*     select option:nth-child(0){
+      color: #b6b6b6;
+    } */ }
     html body label {
       font-size: 1.5rem; }
     html body select option:first-child {
       color: #b6b6b6; }
     html body select option:nth-child(n+2) {
       color: black; }
+    html body input:invalid {
+      box-shadow: 0 0 5px 1px red; }
+    html body input:focus:invalid {
+      outline: none; }
+    html body .error-msg {
+      color: red;
+      font-weight: bold; }
     html body .opt-selected {
       color: #b6b6b6; }
     html body .welcome-box {
