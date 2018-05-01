@@ -28,6 +28,7 @@ $(document).ready(function() {
       if (current !== "placeholder") {
         $(this).css("color","black");
         $(this).css("font-weight","bold");
+        $(this).css("border","2px solid #3B5998");
       } else {
         $(this).css("color","gray");
       }

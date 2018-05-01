@@ -19,7 +19,7 @@ html {
       background: url("../images/select.png") no-repeat 95% center;
       background-color: #FFFFFF;
       border-radius: 5px;
-      border: 2px solid #3B5998;
+      border: 2px solid #DCDCDC;
       width: 40%; }
     html body select option:first-child {
       color: #b6b6b6; }
@@ -34,7 +34,7 @@ html {
       font-weight: bold; }
     html body .opt-selected {
       color: gray;
-      transition-duration: 2s;
+      transition-duration: 1.5s;
       transition-timing-function: ease-out; }
     html body .welcome-box {
       margin: 5% 0%;
