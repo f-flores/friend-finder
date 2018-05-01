@@ -34,7 +34,7 @@ This app can be cloned using git.
 
 ## Comments
 
-The source code for the bamazon app was added to my github page:
+The source code for the app was added to my github page:
 [friend-finder](https://github.com/f-flores/friend-finder)
 
 A link to the friend-finder app:
