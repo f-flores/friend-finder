@@ -16,7 +16,27 @@ $(document).ready(function() {
     $("#picture-error").empty();
   }
 
+
+  // -------------------------------------------------------------------------------------------------
+  // change color of select menu option to black if question is answered
+  $(".opt-selected").each(function(){
+
+    $(this).change(function(){
+      var current = $(this).val();
+      console.log("in opt-selected: " + current);
+
+      if (current !== "placeholder") {
+        $(this).css("color","black");
+        $(this).css("font-weight","bold");
+      } else {
+        $(this).css("color","gray");
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------------------------------------
   // regular expression validators
+  //
   function validateName(name) {
     var re = /^[a-zA-Z ]{1,}$/;
     return re.test(name);
@@ -63,13 +83,10 @@ $(document).ready(function() {
 
     $(".opt-selected").each(function(index) {
       var surveyIndex = index + 1, selString;
-      // console.log("surveyIndex: " + surveyIndex + " value: " + $(this).val());
-      // console.log("element: " + JSON.stringify(element));
+
       selString = "#select-error-" + surveyIndex;
       if ($(this).val() === null) {
         $(selString).html("<p class=\"error-msg\">Please select valid option 1 - 5.</p>");
-        // console.log("selString: " + selString);
-        // console.log("select-error: " + $("#select-error-") + (index+1).toString());
         isValid = false;
       } else {
         $(selString).html("");

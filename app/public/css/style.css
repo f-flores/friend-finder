@@ -4,13 +4,23 @@ html {
   margin-left: 15%;
   margin-right: 15%; }
   html body {
-    background-color: #FAFAFA;
-    width: 90%;
-    /*     select option:nth-child(0){
-      color: #b6b6b6;
-    } */ }
+    background-image: url("../images/spiration-light.png");
+    width: 90%; }
     html body label {
       font-size: 1.5rem; }
+    html body select {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -o-appearance: none;
+      -ms-appearnce: none;
+      display: block;
+      padding: 10px 50px 10px 10px;
+      background: url("../images/select.png") no-repeat 95% center;
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      border: 2px solid #3B5998;
+      width: 40%; }
     html body select option:first-child {
       color: #b6b6b6; }
     html body select option:nth-child(n+2) {
@@ -23,7 +33,7 @@ html {
       color: red;
       font-weight: bold; }
     html body .opt-selected {
-      color: black;
+      color: gray;
       transition-duration: 2s;
       transition-timing-function: ease-out; }
     html body .welcome-box {
@@ -57,228 +67,38 @@ html {
     html body .picture-error {
       color: darkblue;
       font-weight: bold; }
+    html body .custom-button {
+      position: relative;
+      background-color: #2196F3;
+      border: none;
+      font-size: 1.3rem;
+      color: #FFFFFF;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      /* Safari */
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer; }
+    html body .custom-button:after {
+      content: "";
+      background: lightskyblue;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s; }
+    html body .custom-button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s; }
 
 /* box model */
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit; }
-
-/* @media only screen and (max-width: $px-sm-b-size) {
-  html {
-    body {
-      
-      .rainbow-text {
-        font-size: 12vw;
-      }
-    }
-  }
-} */
-/* @media only screen and (min-width: $px-smph-size) {
-  html {
-    body {
-      
-      .rainbow-text {
-        font-size: 4vw;
-      }
-
-      .custom-h3 {
-        text-shadow: none;
-      }
-
-      .custom-gradient {
-        background: yellow;
-        background: -webkit-linear-gradient(left, cyan, #d6d0f3, whitesmoke);
-        background: -o-linear-gradient(right,  cyan, #d6d0f3, whitesmoke);
-        background: -moz-linear-gradient(right,  cyan, #d6d0f3, whitesmoke);
-        background: linear-gradient(to right, cyan, #d6d0f3, whitesmoke);
-        background-clip: content-box;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 2.5vw !important;
-      }
-
-      #add-topic {
-        min-height: 100vh;
-      }
-
-      #favorites {
-        min-height: 100vh;
-      }
-
-    }
-  }
-} */
-/*
-    .custom-gradient {
-      color: $giphy-tbutton-txt;
-      font-size: 6vw;
-    }
-
-    .custom-nav-bg {
-      background: linear-gradient(to right, $friend-color-5, $friend-color-7);
-    }
-
-    .custom-h1 {
-      font-family: $giphyapp-font;
-      // font-size: 1vh;
-
-      // Positioning 
-      margin: 0 auto;
-    }
-
-    .custom-h3 {
-      font-family: $giphyapp-font-body;
-      font-size: 170%;
-      text-shadow: 1px 1px $friend-color-3;
-
-      // box model 
-      width: 100%;
-      padding: 10px;
-
-      // Positioning
-      margin: 0 auto;
-    }
-
-    .rainbow-text {
-      background: yellow;
-      background: -webkit-linear-gradient(left, yellow , orange, green, cyan, blue, violet);
-      background: -o-linear-gradient(right, yellow, orange, green, cyan, blue, violet);
-      background: -moz-linear-gradient(right, yellow, orange, green, cyan, blue, violet);
-      background: linear-gradient(to right, yellow , orangered, green, cyan, blue, violet);
-      background-clip: content-box;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 3.3vw;
-    }
-
-    .topic-list {
-      // padding-left: 3%;
-
-      // Box-model
-      margin: 0 auto;
-      max-width: 100%;
-      border: 1px 1px solid black;
-    }
-
-    .topic-button, .favorite-button {
-      background: linear-gradient(to right, $giphy-tbutton-s, $giphy-tbutton-e);
-      display: block;
-      width: 90%;
-      margin: 0 auto;
-      padding: 4px;
-      border-radius: 15px;
-
-      font-weight: bold;
-      color: $giphy-tbutton-txt;
-      text-align: center;
-    }
-
-    .topic-button:hover, .favorite-button:hover {
-      background: linear-gradient(to right, $giphy-tbutton-hv-s, $giphy-tbutton-hv-e);
-      color: $friend-color-6;
-    }
-
-    .show-favorite:hover {
-      outline: 4px solid $friend-color-2;
-    }
-
-    .clear-button, .clear-favs-button {
-      background: linear-gradient(to right, #dd4d4d, pink);
-      display: block;
-      width: 90%;
-      margin: 0 auto;
-      padding: 4px;
-      border-radius: 15px;
-
-      font-weight: bold;
-      color: brown;
-      text-align: center;
-    }
-
-    .clear-button:hover, .clear-favs-button:hover {
-      background: linear-gradient(to right, #b70135, #c4355d);
-      color: black;
-    }
-
-    .fav-button {
-      background: salmon;
-    }
-
-    .fav-button:hover {
-      background: $friend-color-7;
-      color: white;
-    }
-
-    .clear-images {
-      background: linear-gradient(to right, #ffc579, #fb9d23); 
-      display: block;
-      width: 90%;
-      margin: 0 auto;
-      padding: 4px;
-      border-radius: 15px;
-      font-weight: bold;
-      color: $friend-color-7;
-    }
-
-    .clear-images:hover {
-      background: linear-gradient(to right, #ffaf46, #e78404); 
-      color: black;
-    }
-
-    figure {
-      // width: 100px;
-      float: left;
-      margin: 10px 10px;
-
-      figcaption {
-        font-size: 80%;
-        padding: 0px 0px;
-        border-radius: 5px;
-
-        .rated-g {
-          background: green;
-          color: white;
-          padding: 4px 2px;
-        }
-
-        .rated-pg {
-          background: goldenrod;
-          color: black;
-          padding: 4px 2px;
-        }
-
-        .rated-none, .gif-title {
-          background: black;
-          color: white;
-          padding: 4px 2px;
-        }
-      }
-    }
-
-    button {
-      text-align: center;
-    }
-
-    #add-topic {
-      background: linear-gradient(to right, $friend-color-1, $friend-color-2);
-      margin-left: 0px;
-      // max-height: 100vh;
-    }
-
-    #topic-form {
-      margin-left: 5px;
-    }
-
-    #topic-images {
-      background-color: $friend-color-3;
-    }
-
-    #favorites {
-      background: linear-gradient(to right, $giphy-fav-section, $friend-color-7);
-    }
-
-    #favorites-list {
-      margin-left: 10px;
-    }
-*/
