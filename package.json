@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/f-flores/friend-finder#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "express-handlebars": "^3.0.0",
     "path": "^0.12.7",
     "uuid": "^3.2.1"
